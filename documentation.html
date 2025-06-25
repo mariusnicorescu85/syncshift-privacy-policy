@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syncshift - Technical Documentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Monaco', 'Consolas', monospace;
+            line-height: 1.6;
+            color: #202223;
+            background-color: #f6f6f7;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .header {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #00848e;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .header .subtitle {
+            font-size: 1.1rem;
+            color: #6d7175;
+            margin-bottom: 25px;
+        }
+        
+        .version-info {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .version-badge {
+            background: #e7f7f8;
+            padding: 8px 15px;
+            border-radius: 6px;
+            border-left: 4px solid #00848e;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 0.9rem;
+        }
+        
+        .sidebar {
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-height: 70vh;
+            overflow-y: auto;
+            width: 250px;
+            z-index: 100;
+        }
+        
+        .sidebar h4 {
+            color: #00848e;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+        }
+        
+        .sidebar li {
+            margin-bottom: 8px;
+        }
+        
+        .sidebar a {
+            color: #6d7175;
+            text-decoration: none;
+            font-size: 0.85rem;
+            padding: 5px 10px;
+            border-radius: 4px;
+            display: block;
+            transition: all 0.2s ease;
+        }
+        
+        .sidebar a:hover {
+            background: #e7f7f8;
+            color: #00848e;
+        }
+        
+        .main-content {
+            margin-left: 290px;
+        }
+        
+        .doc-section {
+            background: white;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .section-header {
+            background: linear-gradient(135deg, #00848e 0%, #006b73 100%);
+            color: white;
+            padding: 25px 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .section-icon {
+            font-size: 1.8rem;
+            background: rgba(255,255,255,0.2);
+            padding: 10px;
+            border-radius: 8px;
+        }
+        
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+        
+        .section-content {
+            padding: 30px;
+        }
+        
+        .code-block {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 20px;
+            margin: 15px 0;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            position: relative;
+        }
+        
+        .code-block::before {
+            content: attr(data-lang);
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            background: #6c757d;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+        }
+        
+        .inline-code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 0.9rem;
+            color: #e83e8c;
+        }
+        
+        .api-endpoint {
+            background: #f8f9fa;
+            border-left: 4px solid #00848e;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        
+        .method {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            margin-right: 10px;
+        }
+        
+        .method.get { background: #28a745; color: white; }
+        .method.post { background: #007bff; color: white; }
+        .method.put { background: #ffc107; color: black; }
+        .method.delete { background: #dc3545; color: white; }
+        
+        .parameter-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .parameter-table th {
+            background: #00848e;
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .parameter-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e1e3e5;
+            font-size: 0.9rem;
+        }
+        
+        .parameter-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .required {
+            background: #dc3545;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        
+        .optional {
+            background: #6c757d;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        
+        .response-example {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        .response-example h5 {
+            color: #00848e;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .warning-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .info-box {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .success-box {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .architecture-diagram {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 30px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .flow-step {
+            display: inline-block;
+            background: #e7f7f8;
+            padding: 15px 20px;
+            margin: 5px;
+            border-radius: 8px;
+            border: 2px solid #00848e;
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .flow-step::after {
+            content: '→';
+            position: absolute;
+            right: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: #00848e;
+        }
+        
+        .flow-step:last-child::after {
+            display: none;
+        }
+        
+        @media (max-width: 1400px) {
+            .sidebar {
+                display: none;
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .header {
+                padding: 25px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .section-header {
+                padding: 20px;
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .section-content {
+                padding: 20px;
+            }
+            
+            .version-info {
+                justify-content: center;
+            }
+            
+            .flow-step {
+                display: block;
+                margin: 10px 0;
+            }
+            
+            .flow-step::after {
+                content: '↓';
+                right: 50%;
+                top: 100%;
+                transform: translateX(50%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h4>Navigation</h4>
+            <ul>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#architecture">Architecture</a></li>
+                <li><a href="#installation">Installation</a></li>
+                <li><a href="#authentication">Authentication</a></li>
+                <li><a href="#data-model">Data Model</a></li>
+                <li><a href="#api-reference">API Reference</a></li>
+                <li><a href="#extensions">POS Extensions</a></li>
+                <li><a href="#security">Security</a></li>
+                <li><a href="#configuration">Configuration</a></li>
+                <li><a href="#deployment">Deployment</a></li>
+                <li><a href="#troubleshooting">Troubleshooting</a></li>
+                <li><a href="#changelog">Changelog</a></li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <div class="header">
+                <h1>Syncshift Documentation</h1>
+                <p class="subtitle">Technical documentation and API reference for Syncshift employee time tracking</p>
+                <div class="version-info">
+                    <div class="version-badge">
+                        <strong>Version:</strong> 1.0.0
+                    </div>
+                    <div class="version-badge">
+                        <strong>API Version:</strong> 2025-04
+                    </div>
+                    <div class="version-badge">
+                        <strong>Platform:</strong> Shopify App
+                    </div>
+                    <div class="version-badge">
+                        <strong>Tech Stack:</strong> Remix + Firebase
+                    </div>
+                </div>
+            </div>
+
+            <!-- Overview Section -->
+            <div id="overview" class="doc-section">
+                <div class="section-header">
+                    <div class="section-icon">📋</div>
+                    <div class="section-title">Overview</div>
+                </div>
+                <div class="section-content">
+                    <h3>What is Syncshift?</h3>
+                    <p>Syncshift is a comprehensive employee time tracking solution built specifically for Shopify merchants. It provides seamless integration between Shopify POS and the admin dashboard, enabling accurate time tracking, break management, and payroll reporting.</p>
+
+                    <h3>Key Features</h3>
+                    <ul>
+                        <li><strong>POS Integration:</strong> Native Shopify POS extension for clock in/out</li>
+                        <li><strong>Admin Dashboard:</strong> Complete management interface in Shopify admin</li>
+                        <li><strong>Real-time Sync:</strong> Instant data synchronization across devices</li>
+                        <li><strong>Break Tracking:</strong> Separate tracking for breaks and lunch periods</li>
+                        <li><strong>Analytics:</strong> Comprehensive reporting and data export</li>
+                        <li><strong>Security:</strong> Shop-isolated data with enterprise-grade security</li>
+                    </ul>
+
+                    <h3>System Requirements</h3>
+                    <div class="parameter-table">
+                        <thead>
+                            <tr>
+                                <th>Component</th>
+                                <th>Requirement</th>
+                                <th>Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Shopify Plan</td>
+                                <td>Any Shopify plan</td>
+                                <td>Basic, Shopify, Advanced, Plus supported</td>
+                            </tr>
+                            <tr>
+                                <td>POS Devices</td>
+                                <td>Shopify POS compatible</td>
+                                <td>iOS, Android, or web-based POS</td>
+                            </tr>
+                            <tr>
+                                <td>Internet Connection</td>
+                                <td>Required for real-time sync</td>
+                                <td>Offline queueing available</td>
+                            </tr>
+                            <tr>
+                                <td>Browser Support</td>
+                                <td>Modern browsers</td>
+                                <td>Chrome, Firefox, Safari, Edge</td>
+                            </tr>
+                        </tbody>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Architecture Section -->
+            <div id="architecture" class="doc-section">
+                <div class="section-header">
+                    <div class="section-icon">🏗️</div>
+                    <div class="section-title">Technical Architecture</div>
+                </div>
+                <div class="section-content">
+                    <h3>System Architecture</h3>
+                    <div class="architecture-diagram">
+                        <div class="flow-step">Shopify POS</div>
+                        <div class="flow-step">POS Extension</div>
+                        <div class="flow-step">Remix App</div>
+                        <div class="flow-step">Firebase</div>
+                        <div class="flow-step">Admin Dashboard</div>
+                    </div>
+
+                    <h3>Technology Stack</h3>
+                    <div class="parameter-table">
+                        <thead>
+                            <tr>
+                                <th>Layer</th>
+                                <th>Technology</th>
+                                <th>Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Frontend Framework</td>
+                                <td>Remix (React)</td>
+                                <td>Server-side rendering, routing</td>
+                            </tr>
+                            <tr>
+                                <td>UI Components</td>
+                                <td>Shopify Polaris</td>
+                                <td>Consistent Shopify design system</td>
+                            </tr>
+                            <tr>
+                                <td>POS Extension</td>
+                                <td>Shopify UI Extensions</td>
+                                <td>Native POS integration</td>
+                            </tr>
+                            <tr>
+                                <td>Database</td>
+                                <td>Firebase Firestore</td>
+                                <td>NoSQL document database</td>
+                            </tr>
+                            <tr>
+                                <td>Authentication</td>
+                                <td>Shopify OAuth 2.0</td>
+                                <td>Secure app authentication</td>
+                            </tr>
+                            <tr>
+                                <td>Hosting</td>
+                                <td>Heroku</td>
+                                <td>Cloud application platform</td>
+                            </tr>
+                        </tbody>
+                    </div>
+
+                    <h3>Data Flow</h3>
+                    <div class="code-block" data-lang="flow">
+1. Employee opens POS extension
+2. Selects name and action (Clock In/Out/Break)
+3. Extension sends request to Remix API
+4. API authenticates shop and validates data
+5. Data stored in Firestore with shop isolation
+6. Real-time sync updates admin dashboard
+7. Analytics calculated and displayed
+                    </div>
+                </div>
+            </div>
+
+            <!-- Installation Section -->
+            <div id="installation" class="doc-section">
+                <div class="section-header">
+                    <div class="section-icon">⚙️</div>
+                    <div class="section-title">Installation & Setup</div>
+                </div>
+                <div class="section-content">
+                    <h3>App Installation</h3>
+                    <p>Syncshift is available through the Shopify App Store and uses standard Shopify app installation procedures.</p>
+
+                    <h4>Installation Process</h4>
+                    <div class="code-block" data-lang="process">
+1. Navigate to Shopify App Store
+2. Search for "Syncshift"
+3. Click "Add app"
+4. Review and accept permissions
+5. App automatically installed and configured
+                    </div>
+
+                    <h3>Required Permissions</h3>
+                    <div class="parameter-table">
+                        <thead>
+                            <tr>
+                                <th>Permission</th>
+                                <th>Scope</th>
+                                <th>Reason</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Products</td>
+                                <td><span class="inline-code">write_products</span></td>
+                                <td>Required for POS extension registration</td>
+                            </tr>
+                            <tr>
+                                <td>Shop Data</td>
+                                <td><span class="inline-code">read_shop</span></td>
+                                <td>Store identification and data isolation</td>
+                            </tr>
+                        </tbody>
+                    </div>
+
+                    <div class="info-box">
+                        <strong>Minimal Permissions:</strong> Syncshift requests only the minimum permissions required for functionality. We do not access customer data, orders, or payment information.
+                    </div>
+
+                    <h3>Post-Installation</h3>
+                    <p>After installation, the app automatically:</p>
+                    <ul>
+                        <li>Creates shop-specific data containers in Firebase</li>
+                        <li>Registers POS extensions with Shopify</li>
+                        <li>Initializes the admin dashboard</li>
+                        <li>Sets up webhook subscriptions for app lifecycle management</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Authentication Section -->
+            <div id="authentication" class="doc-section">
+                <div class="section-header">
+                    <div class="section-icon">🔐</div>
+                    <div class="section-title">Authentication</div>
+                </div>
+                <div class="section-content">
+                    <h3>Shopify OAuth Integration</h3>
+                    <p>Syncshift uses Shopify's OAuth 2.0 system for secure authentication and authorization.</p>
+
+                    <h4>Authentication Flow</h4>
+                    <div class="code-block" data-lang="javascript">
+// shopify.server.js
+import { shopifyApp } from "@shopify/shopify-app-remix/server";
+
+const shopify = shopifyApp({
+  apiKey: process.env.SHOPIFY_API_KEY,
+  apiSecretKey: process.env.SHOPIFY_API_SECRET,
+  apiVersion: ApiVersion.January25,
+  scopes: ["write_products"],
+  appUrl: process.env.SHOPIFY_APP_URL,
+  authPathPrefix: "/auth",
+  sessionStorage: new MemorySessionStorage(),
+  distribution: AppDistribution.AppStore
+});
+                    </div>
+
+                    <h3>Session Management</h3>
+                    <p>Sessions are managed using Shopify's session storage system with the following characteristics:</p>
+                    <ul>
+                        <li><strong>Storage:</strong> Memory-based session storage for development</li>
+                        <li><strong>Persistence:</strong> Sessions maintained across requests</li>
+                        <li><strong>Security:</strong> Automatic token refresh and validation</li>
+                        <li><strong>Isolation:</strong> Complete shop data separation</li>
+                    </ul>
+
+                    <h3>API Authentication</h3>
+                    <div class="api-endpoint">
+                        <span class="method post">POST</span>
+                        <strong>/api/time-tracking/clock</strong>
+                        <p>All API endpoints require valid Shopify session authentication.</p>
+                    </div>
+
+                    <h4>Authentication Headers</h4>
+                    <div class="code-block" data-lang="http">
+Content-Type: application/json
+X-Shopify-Shop-Domain: store.myshopify.com
+Authorization: Bearer [session-token]
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Model Section -->
+            <div id="data-model" class="doc-section">
+                <div class="section-header">
+                    <div class="section-icon">🗄️</div>
+                    <div class="section-title">Data Model</div>
+                </div>
+                <div class="section-content">
+                    <h3>Firebase Firestore Structure</h3>
+                    <p>Syncshift uses a hierarchical document structure in Firestore with shop-level isolation.</p>
+
+                    <h4>Collection Structure</h4>
+                    <div class="code-block" data-lang="javascript">
+// Firestore Collection Hierarchy
+shops/{shopId}/
+├── staff/
+│   ├── {staffId}
+│   └── {staffId}
+├── timeEntries/
+│   ├── {entryId}
+│   └── {entryId}
+└── settings/
+    └── config
+                    </div>
+
+                    <h3>Data Models</h3>
+
+                    <h4>Staff Document</h4>
+                    <div class="code-block" data-lang="json">
+{
+  "id": "staff_001",
+  "name": "John Doe",
+  "role": "Sales Associate",
+  "active": true,
+  "createdAt": "2024-12-26T10:00:00Z",
+  "updatedAt": "2024-12-26T10:00:00Z"
+}
+                    </div>
+
+                    <h4>Time Entry Document</h4>
+                    <div class="code-block" data-lang="json">
+{
+  "id": "entry_001",
+  "staffId": "staff_001",
+  "action": "clock_in",
+  "timestamp": "2024-12-26T09:00:00Z",
+  "date": "2024-12-26",
+  "deviceId": "pos_device_001",
+  "source": "pos"
+}
+                    </div>
+
+                    <h3>Action Types</h3>
+                    <div class="parameter-table">
+                        <thead>
+                            <tr>
+                                <th>Action</th>
+                                <th>Description</th>
+                                <th>Calculation Impact</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="inline-code">clock_in</span></td>
+                                <td>Start of work period</td>
+                                <td>Begins hour calculation</td>
+                            </tr>
+                            <tr>
+                                <td><span class="inline-code">clock_out</span></td>
+                                <td>End of work period</td>
+                                <td>Completes hour calculation</td>
+                            </tr>
+                            <tr>
+                                <td><span class="inline-code">break</span></td>
+                                <td>Short break period</td>
+                                <td>Tracked separately</td>
+                            </tr>
+                            <tr>
+                                <td><span class="inline-code">lunch</span></td>
+                                <td>Lunch break period</td>
+                                <td>Tracked separately</td>
+                            </tr>
+                        </tbody>
+                    </div>
+
+                    <h3>Data Validation</h3>
+                    <div class="code-block" data-lang="javascript">
+// Server-side validation
+const validateTimeEntry = (entry) => {
+  const validActions = ['clock_in', 'clock_out', 'break', 'lunch'];
+  
+  if (!validActions.includes(entry.action)) {
+    throw new Error('Invalid action type');
+  }
+  
+  if (!entry.staffId || entry.staffId.trim() === '') {
+    throw new Error('Staff ID is required');
+  }
+  
+  if (!entry.timestamp || isNaN(Date.parse(entry.timestamp))) {
+    throw new Error('Valid timestamp is required');
+  }
+  
+  return true;
+};
+                    </div>
+                </div>
+            </div>
+
+            <!-- API Reference Section -->
+            <div id="api-reference" class="doc-section">
+                <div class="section-header">
+                    <div class="section-icon">🔌</div>
+                    <div class="section-title">API Reference</div>
+                </div>
+                <div class="section-content">
+                    <h3>Time Tracking API</h3>
+                    <p>RESTful API endpoints for time tracking operations.</p>
+
+                    <h4>Record Clock Event</h4>
+                    <div class="api-endpoint">
+                        <span class="method post">POST</span>
+                        <strong>/api/time-tracking/clock</strong>
+                        <p>Records a time tracking event (clock in/out, break, lunch)</p>
+                    </div>
+
+                    <h5>Request Body</h5>
+                    <div class="parameter-table">
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Type</th>
+                                <th>Required</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="inline-code">staffId</span></td>
+                                <td>string</td>
+                                <td><span class="required">Required</span></td>
+                                <td>Unique identifier for staff member</td>
+                            </tr>
+                            <tr>
+                                <td><span class="inline-code">action</span></td>
+                                <td>string</td>
+                                <td><span class="required">Required</span></td>
+                                <td>clock_in, clock_out, break, lunch</td>
+                            </tr>
+                            <tr>
+                                <td><span class="inline-code">timestamp</span></td>
+                                <td>string</td>
+                                <td><span class="optional">Optional</span></td>
+                                <td>ISO 8601 timestamp (defaults to now)</td>
+                            </tr>
+                        </tbody>
+                    </div>
+
+                    <h5>Example Request</h5>
+                    <div class="code-block" data-lang="javascript">
+const response = await fetch('/api/time-tracking/clock', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    staffId: 'john_doe',
+    action: 'clock_in'
+  })
+});
+                    </div>
+
+                    <h5>Example Response</h5>
+                    <div class="response-example">
+                        <h5>Success (200)</h5>
+                        <div class="code-block" data-lang="json">
+{
+  "success": true,
+  "data": {
+    "id": "entry_12345",
+    "staffId": "john_doe",
+    "action": "clock_in",
+    "timestamp": "2024-12-26T09:00:00Z",
+    "date": "2024-12-26"
+  },
+  "message": "Clock event recorded successfully"
+}
+                        </div>
+                    </div>
+
+                    <h4>Get Time Entries</h4>
+                    <div class="api-endpoint">
+                        <span class="method get">GET</span>
+                        <strong>/api/time-tracking/entries</strong>
+                        <p>Retrieves time entries with optional filtering</p>
+                    </div>
+
+                    <h5>Query Parameters</h5>
+                    <div class="parameter-table">
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Type</th>
+                                <th>Required</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="inline-code">startDate</span></td>
+                                <td>string</td>
+                                <td><span class="optional">Optional</span></td>
+                                <td>Start date filter (YYYY-MM-DD)</td>
+                            </tr>
+                            <tr>
+                                <td><span class="inline-code">endDate</span></td>
+                                <td>string</td>
+                                <td><span class="optional">Optional</span></td>
+                                <td>End date filter (YYYY-MM-DD)</td>
+                            </tr>
+                            <tr>
+                                <td><span class="inline-code">staffId</span></td>
+                                <td>string</td>
+                                <td><span class="optional">Optional</span></td>
+                                <td>Filter by specific staff member</td>
+                            </tr>
+                            <tr>
+                                <td><span class="inline-code">action</span></td>
+                                <td>string</td>
+                                <td><span class="optional">Optional</span></td>
+                                <td>Filter by action type</td>
+                            </tr>
+                        </tbody>
+                    </div>
+
+                    <h4>Error Responses</h4>
+                    <div class="response-example">
+                        <h5>Bad Request (400)</h5>
+                        <div class="code-block" data-lang="json">
+{
+  "success": false,
+  "error": "Invalid action type",
+  "code": "INVALID_ACTION"
+}
+                        </div>
+                    </div>
+
+                    <div class="response-example">
+                        <h5>Unauthorized (401)</h5>
+                        <div class="code-block" data-lang="json">
+{
+  "success": false,
+  "error": "Authentication required",
+  "code": "UNAUTHORIZED"
+}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- POS Extensions Section -->
+            <div id="extensions" class="doc-section">
+                <div class="section-header">
+                    <div class="section-icon">📱</div>
+                    <div class="section-title">POS Extensions</div>
+                </div>
+                <div class="section-content">
+                    <h3>Shopify POS Extension Architecture</h3>
+                    <p>Syncshift's POS extension is built using Shopify's UI Extensions framework for native integration.</p>
+
+                    <h4>Extension Structure</h4>
+                    <div class="code-block" data-lang="javascript">
+// extensions/pos-extension/src/Tile.jsx
+import { Tile, reactExtension, useApi } from '@shopify/ui-extensions-react/point-of-sale'
+
+const TileComponent = () => {
+  const api = useApi()
+  
+  return (
+    &lt;Tile
+      title="POS Time Tracking Extension"
+      subtitle="Employee Time Tracking"
+      onPress={() => api.action.presentModal()}
+      enabled
+    /&gt;
+  )
+}
+
+export default reactExtension('pos.home.tile.render', () => {
+  return &lt;TileComponent /&gt;
+})
+                    </div>
+
+                    <h4>Modal Implementation</h4>
+                    <div class="code-block" data-lang="javascript">
+// Modal component for time tracking
+const Modal = () => {
+  const [selectedStaff, setSelectedStaff] = useState('')
+  const [selectedAction, setSelectedAction] = useState('clock_in')
+  
+  const handleSubmit = async () => {
+    try {
+      const response = await timeTrackingService.recordClockEvent(
+        selectedStaff, 
+        selectedAction
+      )
+      
+      if (response.success) {
+        // Show success message
+        console.log('Clock event recorded successfully')
+      }
+    } catch (error) {
+      console.error('Error recording clock event:', error)
+    }
+  }
+  
+  return (
+    // React component JSX
+  )
+}
+                    </div>
+
+                    <h3>Extension Configuration</h3>
+                    <div class="code-block" data-lang="toml">
+# shopify.extension.toml
+[extensions.pos-extension]
+type = "pos_ui_extension"
+name = "POS Time Tracking Extension"
+handle = "pos-time-tracking"
+
+[extensions.pos-extension.targeting]
+target = "pos.home.tile.render"
+
+[extensions.pos-extension.targeting]
+target = "pos.home.modal.render"
+                    </div>
+
+                    <h3>Offline Capability</h3>
+                    <p>The POS extension includes offline support for unreliable network conditions:</p>
+                    <ul>
+                        <li><strong>Queue Management:</strong> Stores entries locally when offline</li>
+                        <li><strong>Auto-Sync:</strong> Automatically syncs when connection restored</li>
+                        <li><strong>Conflict Resolution:</strong> Handles timestamp conflicts gracefully</li>
+                        <li><strong>User Feedback:</strong> Clear indication of online/offline status</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Security Section -->
+            <div id="security" class="doc-section">
+                <div class="section-header">
+                    <div class="section-icon">🔒</div>
+                    <div class="section-title">Security</div>
+                </div>
+                <div class="section-content">
+                    <h3>Data Security</h3>
+                    <p>Syncshift implements multiple layers of security to protect merchant and employee data.</p>
+
+                    <h4>Shop Data Isolation</h4>
+                    <div class="code-block" data-lang="javascript">
+// Firebase service with shop isolation
+export const timeTrackingService = {
+  async recordClockEvent(shopId, staffId, action) {
+    // Shop ID extracted from authenticated session
+    const shopCollection = db.collection(`shops/${shopId}/timeEntries`);
+    
+    // All data operations scoped to specific shop
+    const docRef = await shopCollection.add({
+      staffId,
+      action,
+      timestamp: new Date().toISOString(),
+      date: new Date().toISOString().split('T')[0]
+    });
+    
+    return docRef;
+  }
+};
+                    </div>
+
+                    <h3>Security Measures</h3>
+                    <div class="parameter-table">
+                        <thead>
+                            <tr>
+                                <th>Security Layer</th>
+                                <th>Implementation</th>
+                                <th>Protection</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Authentication</td>
+                                <td>Shopify OAuth 2.0</td>
+                                <td>Authorized access only</td>
+                            </tr>
+                            <tr>
+                                <td>Data Encryption</td>
+                                <td>TLS 1.3 + AES-256</td>
+                                <td>In-transit and at-rest encryption</td>
+                            </tr>
+                            <tr>
+                                <td>Data Isolation</td>
+                                <td>Shop-scoped collections</td>
+                                <td>Complete tenant separation</td>
+                            </tr>
+                            <tr>
+                                <td>Access Control</td>
+                                <td>Firebase security rules</td>
+                                <td>Role-based data access</td>
+                            </tr>
+                            <tr>
+                                <td>Input Validation</td>
+                                <td>Server-side validation</td>
+                                <td>Prevents malicious input</td>
+                            </tr>
+                        </tbody>
+                    </div>
+
+                    <h4>Firebase Security Rules</h4>
+                    <div class="code-block" data-lang="javascript">
+// Firestore security rules
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Shop-level isolation
+    match /shops/{shopId}/{document=**} {
+      allow read, write: if isAuthenticated() && 
+                           isAuthorizedForShop(shopId);
+    }
+  }
+}
+
+function isAuthenticated() {
+  return request.auth != null;
+}
+
+function isAuthorizedForShop(shopId) {
+  return request.auth.token.shop_id == shopId;
+}
+                    </div>
+
+                    <h3>Privacy Compliance</h3>
+                    <div class="success-box">
+                        <strong>GDPR & CCPA Compliant:</strong> Syncshift is designed to comply with major privacy regulations including GDPR and CCPA. We implement data minimization, user rights, and automatic data deletion policies.
+                    </div>
+
+                    <h4>Data Retention Policy</h4>
+                    <ul>
+                        <li><strong>Active Stores:</strong> Data retained while app is installed</li>
+                        <li><strong>Uninstalled Apps:</strong> Automatic deletion after 30 days</li>
+                        <li><strong>User Requests:</strong> Manual deletion available upon request</li>
+                        <li><strong>Backup Data:</strong> Excluded from regular backups after deletion</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Configuration Section -->
+            <div id="configuration" class="doc-section">
+                <div class="section-header">
+                    <div class="section-icon">⚙️</div>
+                    <div class="section-title">Configuration</div>
+                </div>
+                <div class="section-content">
+                    <h3>Environment Variables</h3>
+                    <p>Required environment variables for deployment:</p>
+
+                    <div class="parameter-table">
+                        <thead>
+                            <tr>
+                                <th>Variable</th>
+                                <th>Required</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="inline-code">SHOPIFY_API_KEY</span></td>
+                                <td><span class="required">Required</span></td>
+                                <td>Shopify app API key</td>
+                            </tr>
+                            <tr>
+                                <td><span class="inline-code">SHOPIFY_API_SECRET</span></td>
+                                <td><span class="required">Required</span></td>
+                                <td>Shopify app secret key</td>
+                            </tr>
+                            <tr>
+                                <td><span class="inline-code">SHOPIFY_APP_URL</span></td>
+                                <td><span class="required">Required</span></td>
+                                <td>Public URL of the app</td>
+                            </tr>
+                            <tr>
+                                <td><span class="inline-code">FIREBASE_CREDENTIALS_BASE64</span></td>
+                                <td><span class="required">Required</span></td>
+                                <td>Base64 encoded Firebase service account</td>
+                            </tr>
+                            <tr>
+                                <td><span class="inline-code">NODE_ENV</span></td>
+                                <td><span class="optional">Optional</span></td>
+                                <td>Environment (production/development)</td>
+                            </tr>
+                        </tbody>
+                    </div>
+
+                    <h3>Shopify App Configuration</h3>
+                    <div class="code-block" data-lang="toml">
+# shopify.app.toml
+client_id = "your_app_client_id"
+name = "syncshift"
+handle = "syncshift-time-tracking"
+application_url = "https://your-app-url.com"
+embedded = true
+
+[access_scopes]
+scopes = "write_products"
+
+[auth]
+redirect_urls = [
+  "https://your-app-url.com/auth/callback"
+]
+
+[webhooks]
+api_version = "2025-04"
+
+[[webhooks.subscriptions]]
+topics = ["app/uninstalled"]
+uri = "/webhooks/app/uninstalled"
+                    </div>
+
+                    <h3>Firebase Configuration</h3>
+                    <div class="code-block" data-lang="javascript">
+// firebase.server.js
+import { initializeApp, cert } from "firebase-admin/app";
+import { getFirestore } from "firebase-admin/firestore";
+
+const initFirebase = () => {
+  const base64Credentials = process.env.FIREBASE_CREDENTIALS_BASE64;
+  const credentials = JSON.parse(
+    Buffer.from(base64Credentials, 'base64').toString('utf-8')
+  );
+
+  const app = initializeApp({
+    credential: cert(credentials),
+    projectId: credentials.project_id,
+  });
+
+  return getFirestore(app);
+};
+                    </div>
+                </div>
+            </div>
+
+            <!-- Deployment Section -->
+            <div id="deployment" class="doc-section">
+                <div class="section-header">
+                    <div class="section-icon">🚀</div>
+                    <div class="section-title">Deployment</div>
+                </div>
+                <div class="section-content">
+                    <h3>Production Deployment</h3>
+                    <p>Syncshift is deployed on Heroku with automatic builds from the main branch.</p>
+
+                    <h4>Deployment Process</h4>
+                    <div class="code-block" data-lang="bash">
+# Install dependencies
+npm install
+
+# Build the application
+npm run build
+
+# Deploy to Heroku
+git push heroku main
+
+# Configure environment variables
+heroku config:set SHOPIFY_API_KEY=your_key
+heroku config:set SHOPIFY_API_SECRET=your_secret
+heroku config:set FIREBASE_CREDENTIALS_BASE64=your_credentials
+                    </div>
+
+                    <h3>Build Configuration</h3>
+                    <div class="code-block" data-lang="json">
+// package.json
+{
+  "scripts": {
+    "build": "remix vite:build",
+    "start": "remix-serve ./build/server/index.js",
+    "heroku-postbuild": "NODE_OPTIONS=\"--max-old-space-size=1536\" npm run build"
+  },
+  "engines": {
+    "node": "^18.20 || ^20.10 || >=21.0.0"
+  }
+}
+                    </div>
+
+                    <h3>Health Checks</h3>
+                    <div class="api-endpoint">
+                        <span class="method get">GET</span>
+                        <strong>/health</strong>
+                        <p>Health check endpoint for monitoring</p>
+                    </div>
+
+                    <div class="response-example">
+                        <h5>Healthy Response</h5>
+                        <div class="code-block" data-lang="json">
+{
+  "status": "healthy",
+  "timestamp": "2024-12-26T10:00:00Z",
+  "services": {
+    "database": "connected",
+    "shopify": "authenticated"
+  },
+  "version": "1.0.0"
+}
+                        </div>
+                    </div>
+
+                    <h3>Monitoring</h3>
+                    <ul>
+                        <li><strong>Application Logs:</strong> Structured logging via Heroku</li>
+                        <li><strong>Error Tracking:</strong> Automatic error reporting</li>
+                        <li><strong>Performance Monitoring:</strong> Response time tracking</li>
+                        <li><strong>Uptime Monitoring:</strong> Health check endpoints</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Troubleshooting Section -->
+            <div id="troubleshooting" class="doc-section">
+                <div class="section-header">
+                    <div class="section-icon">🛠️</div>
+                    <div class="section-title">Technical Troubleshooting</div>
+                </div>
+                <div class="section-content">
+                    <h3>Common Issues</h3>
+
+                    <h4>Firebase Connection Issues</h4>
+                    <div class="warning-box">
+                        <strong>Symptom:</strong> "Failed to initialize Firebase" error
+                    </div>
+                    <div class="code-block" data-lang="javascript">
+// Debug Firebase credentials
+console.log('Firebase project ID:', credentials.project_id);
+console.log('Credentials valid:', !!credentials.private_key);
+
+// Test Firestore connection
+try {
+  const testDoc = await db.collection('test').doc('test').get();
+  console.log('Firestore connected successfully');
+} catch (error) {
+  console.error('Firestore connection failed:', error);
+}
+                    </div>
+
+                    <h4>Shopify Authentication Failures</h4>
+                    <div class="warning-box">
+                        <strong>Symptom:</strong> OAuth redirects fail or session expires
+                    </div>
+                    <div class="code-block" data-lang="javascript">
+// Debug authentication
+export async function loader({ request }) {
+  try {
+    const { admin, session } = await authenticate.admin(request);
+    console.log('Shop:', session.shop);
+    console.log('Access token valid:', !!session.accessToken);
+    return { authenticated: true };
+  } catch (error) {
+    console.error('Auth failed:', error.message);
+    return redirect('/auth');
+  }
+}
+                    </div>
+
+                    <h4>POS Extension Not Loading</h4>
+                    <div class="warning-box">
+                        <strong>Symptom:</strong> Extension tile doesn't appear on POS
+                    </div>
+                    <p>Debugging steps:</p>
+                    <ol>
+                        <li>Verify app is installed and active</li>
+                        <li>Check extension configuration in shopify.extension.toml</li>
+                        <li>Restart POS application completely</li>
+                        <li>Check browser console for JavaScript errors</li>
+                        <li>Verify POS device has internet connectivity</li>
+                    </ol>
+
+                    <h3>Debug Logging</h3>
+                    <div class="code-block" data-lang="javascript">
+// Enable debug logging
+const DEBUG = process.env.NODE_ENV === 'development';
+
+const debugLog = (context, data) => {
+  if (DEBUG) {
+    console.log(`[${context}]`, JSON.stringify(data, null, 2));
+  }
+};
+
+// Usage in API endpoints
+export async function action({ request }) {
+  debugLog('API Request', {
+    method: request.method,
+    url: request.url,
+    headers: Object.fromEntries(request.headers.entries())
+  });
+  
+  // ... rest of the function
+}
+                    </div>
+
+                    <h3>Performance Optimization</h3>
+                    <div class="info-box">
+                        <strong>Database Queries:</strong> Use indexed queries and limit result sets to improve performance.
+                    </div>
+                    <div class="code-block" data-lang="javascript">
+// Optimized Firestore query
+const getTimeEntries = async (shopId, startDate, endDate) => {
+  return await db
+    .collection(`shops/${shopId}/timeEntries`)
+    .where('date', '>=', startDate)
+    .where('date', '<=', endDate)
+    .orderBy('timestamp', 'desc')
+    .limit(1000)  // Prevent large result sets
+    .get();
+};
+                    </div>
+                </div>
+            </div>
+
+            <!-- Changelog Section -->
+            <div id="changelog" class="doc-section">
+                <div class="section-header">
+                    <div class="section-icon">📝</div>
+                    <div class="section-title">Technical Changelog</div>
+                </div>
+                <div class="section-content">
+                    <h3>Version 1.0.0 - May, 2025</h3>
+                    
+                    <h4>Initial Release</h4>
+                    <ul>
+                        <li><strong>Core API:</strong> Time tracking endpoints with full CRUD operations</li>
+                        <li><strong>POS Extension:</strong> Native Shopify POS integration</li>
+                        <li><strong>Admin Dashboard:</strong> React-based management interface</li>
+                        <li><strong>Firebase Backend:</strong> Scalable NoSQL database with shop isolation</li>
+                        <li><strong>Authentication:</strong> Shopify OAuth 2.0 integration</li>
+                        <li><strong>Security:</strong> End-to-end encryption and data isolation</li>
+                    </ul>
+
+                    <h4>Technical Stack</h4>
+                    <ul>
+                        <li><strong>Framework:</strong> Remix 2.16.1 with React 18</li>
+                        <li><strong>UI Library:</strong> Shopify Polaris 12.27.0</li>
+                        <li><strong>Database:</strong> Firebase Firestore with Admin SDK</li>
+                        <li><strong>Hosting:</strong> Heroku with Node.js 18+</li>
+                        <li><strong>Extensions:</strong> Shopify UI Extensions for POS</li>
+                    </ul>
+
+                    <h4>API Specifications</h4>
+                    <ul>
+                        <li><strong>REST API:</strong> JSON-based with standard HTTP methods</li>
+                        <li><strong>Authentication:</strong> Bearer token via Shopify session</li>
+                        <li><strong>Rate Limiting:</strong> Standard Shopify app limits</li>
+                        <li><strong>Data Format:</strong> ISO 8601 timestamps, UTF-8 encoding</li>
+                    </ul>
+
+                    <div class="info-box">
+                        <strong>Coming Soon:</strong> GraphQL API, Webhook subscriptions, Advanced analytics endpoints, Bulk operations API
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for sidebar navigation
+        document.querySelectorAll('.sidebar a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Highlight current section in sidebar
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.id;
+                    document.querySelectorAll('.sidebar a').forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+
+        document.querySelectorAll('.doc-section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
