@@ -1,12 +1,9 @@
 {
   "rewrites": [
-    {
-      "source": "/", 
-      "destination": "/privacy.html"
-    },
-    {
-      "source": "/privacy", 
-      "destination": "/privacy.html"
-    }
+    { "source": "/", "destination": "/privacy.html" },
+    { "source": "/faq", "destination": "/faq.html" },
+    { "source": "/changelog", "destination": "/changelog.html" },
+    { "source": "/tutorial", "destination": "/tutorial.html" },
+    { "source": "/documentation", "destination": "/documentation.html" }
   ]
 }
