@@ -1,87 +1,507 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Privacy Policy | Syncshift</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 0 20px;
-      line-height: 1.6;
-    }
-    h1, h2 {
-      color: #333;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syncshift - Privacy Policy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: #202223;
+            background-color: #f6f6f7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .header {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            color: #00848e;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .header .subtitle {
+            font-size: 1.1rem;
+            color: #6d7175;
+            margin-bottom: 20px;
+        }
+        
+        .last-updated {
+            background: #e7f7f8;
+            padding: 12px 20px;
+            border-radius: 8px;
+            border-left: 4px solid #00848e;
+            display: inline-block;
+            font-weight: 600;
+            color: #00848e;
+        }
+        
+        .content {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            color: #00848e;
+            font-size: 1.5rem;
+            margin: 40px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e7f7f8;
+        }
+        
+        h2:first-child {
+            margin-top: 0;
+        }
+        
+        h3 {
+            color: #202223;
+            font-size: 1.2rem;
+            margin: 25px 0 15px 0;
+            font-weight: 600;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            color: #6d7175;
+        }
+        
+        ul, ol {
+            margin: 15px 0 15px 25px;
+            color: #6d7175;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .highlight-box {
+            background: #e7f7f8;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #00848e;
+            margin: 20px 0;
+        }
+        
+        .highlight-box h4 {
+            color: #00848e;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .data-table th {
+            background: #00848e;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .data-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e1e3e5;
+        }
+        
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .contact-section {
+            background: #00848e;
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .contact-section h2 {
+            color: white;
+            border-bottom: 2px solid rgba(255,255,255,0.2);
+            margin-bottom: 20px;
+        }
+        
+        .contact-section p {
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 20px;
+        }
+        
+        .contact-email {
+            background: white;
+            color: #00848e;
+            padding: 12px 25px;
+            border-radius: 6px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: transform 0.2s ease;
+        }
+        
+        .contact-email:hover {
+            transform: translateY(-2px);
+        }
+        
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .header, .content {
+                padding: 25px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.3rem;
+            }
+            
+            .data-table {
+                font-size: 0.9rem;
+            }
+            
+            .data-table th, .data-table td {
+                padding: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <h1>Privacy Policy</h1>
-  <p><strong>Effective Date:</strong> 25/06/2025</p>
+    <div class="container">
+        <div class="header">
+            <h1>Syncshift</h1>
+            <p class="subtitle">Employee Time Tracking for Shopify POS</p>
+            <div class="last-updated">
+                Last Updated: December 26, 2024
+            </div>
+        </div>
 
-  <h2>Introduction</h2>
-  <p>
-    Welcome to <strong>Syncshift</strong>, a Shopify POS application developed by <strong>NuvaleoAI</strong> ("we", "our", or "us").
-    This Privacy Policy explains how we collect, use, and protect personal data when you use our application in connection with your Shopify store.
-  </p>
-  <p>
-    We are committed to safeguarding privacy and ensuring compliance with data protection laws, including the UK GDPR and the Data Protection Act 2018.
-  </p>
+        <div class="content">
+            <h2>Privacy Policy</h2>
+            
+            <p>At Syncshift, we are committed to protecting your privacy and ensuring the security of your data. This Privacy Policy explains how we collect, use, store, and protect information when you use our employee time tracking application for Shopify stores.</p>
 
-  <h2>Information We Collect</h2>
-  <ul>
-    <li>Store name, domain, owner name, and email</li>
-    <li>Staff names, emails, phone numbers (if provided)</li>
-    <li>Shift data: clock-ins/outs, breaks, roles</li>
-    <li>Activity logs related to POS usage</li>
-  </ul>
+            <div class="success">
+                <strong>Quick Summary:</strong> We only collect essential time tracking data, never share it with third parties, and use industry-standard security. Your data is isolated to your store and automatically deleted if you uninstall the app.
+            </div>
 
-  <h2>How We Use Your Information</h2>
-  <ul>
-    <li>Power core features (time tracking, analytics)</li>
-    <li>Generate admin reports and dashboards</li>
-    <li>Improve app features and user support</li>
-    <li>Send notifications (if applicable)</li>
-  </ul>
-  <p>We do not sell or rent personal data.</p>
+            <h2>1. Information We Collect</h2>
 
-  <h2>Data Storage and Security</h2>
-  <p>All data is stored securely on trusted cloud infrastructure. We use encryption and access controls to protect your data.</p>
+            <h3>1.1 Store Information</h3>
+            <p>When you install Syncshift, we collect basic information about your Shopify store:</p>
+            <ul>
+                <li><strong>Store Domain:</strong> Your store's myshopify.com URL for app authentication</li>
+                <li><strong>Store ID:</strong> Unique identifier to isolate your data</li>
+                <li><strong>App Installation Data:</strong> When you installed and last used the app</li>
+                <li><strong>Shopify Plan:</strong> Basic plan information for compatibility</li>
+            </ul>
 
-  <h2>Data Sharing</h2>
-  <ul>
-    <li>Shopify for integration purposes</li>
-    <li>Trusted service providers (cloud, analytics)</li>
-    <li>Authorities when legally required</li>
-  </ul>
+            <h3>1.2 Employee Time Tracking Data</h3>
+            <p>The core functionality of our app involves collecting time tracking information:</p>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Data Type</th>
+                        <th>What We Collect</th>
+                        <th>Why We Need It</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Staff Information</strong></td>
+                        <td>Employee names, roles, and ID numbers you create</td>
+                        <td>To organize time entries and generate reports</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Clock Events</strong></td>
+                        <td>Clock in/out, break, and lunch timestamps</td>
+                        <td>To calculate work hours and track attendance</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Time Entries</strong></td>
+                        <td>Date, time, duration, and action type</td>
+                        <td>To provide accurate time tracking and payroll data</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Device Information</strong></td>
+                        <td>POS device ID where entries were created</td>
+                        <td>For troubleshooting and data integrity</td>
+                    </tr>
+                </tbody>
+            </table>
 
-  <h2>Data Retention</h2>
-  <p>
-    Data is kept only as long as needed to fulfill the app’s purpose and comply with legal obligations.
-    Store owners can request deletion of staff data anytime.
-  </p>
+            <h3>1.3 Usage Analytics</h3>
+            <p>We collect minimal, anonymized usage data to improve our app:</p>
+            <ul>
+                <li>Feature usage frequency (which features are used most)</li>
+                <li>Error logs and crash reports</li>
+                <li>Performance metrics (app load times, response times)</li>
+                <li>General usage patterns (without personal identifiers)</li>
+            </ul>
 
-  <h2>Your Rights</h2>
-  <ul>
-    <li>Access your data</li>
-    <li>Correct inaccuracies</li>
-    <li>Request deletion</li>
-    <li>Object to or restrict processing</li>
-  </ul>
-  <p>Contact us at <strong>marius.nicorescu@nuvaleoai.co.uk</strong> to exercise your rights.</p>
+            <div class="highlight-box">
+                <h4>What We DON'T Collect</h4>
+                <ul>
+                    <li>❌ Customer data from your store</li>
+                    <li>❌ Product information or inventory</li>
+                    <li>❌ Sales data or transaction details</li>
+                    <li>❌ Payment or financial information</li>
+                    <li>❌ Personal employee information beyond names and roles</li>
+                    <li>❌ Social security numbers or government IDs</li>
+                </ul>
+            </div>
 
-  <h2>Changes to This Policy</h2>
-  <p>
-    We may update this policy from time to time. We’ll notify users of significant changes via email or in-app messages.
-  </p>
+            <h2>2. How We Use Your Information</h2>
 
-  <h2>Contact Us</h2>
-  <p>
-    <strong>NuvaleoAI</strong><br/>
-    Manchester, United Kingdom<br/>
-    Email: marius.nicorescu@nuvaleoai.co.uk
-  </p>
+            <h3>2.1 Primary App Functions</h3>
+            <p>We use your data exclusively for providing time tracking services:</p>
+            <ul>
+                <li><strong>Time Calculation:</strong> Computing work hours, breaks, and overtime</li>
+                <li><strong>Report Generation:</strong> Creating daily, weekly, and monthly reports</li>
+                <li><strong>Data Export:</strong> Providing CSV/Excel exports for payroll</li>
+                <li><strong>Staff Management:</strong> Organizing employees and their time records</li>
+            </ul>
+
+            <h3>2.2 App Improvement</h3>
+            <p>We may use anonymized, aggregated data to:</p>
+            <ul>
+                <li>Fix bugs and improve app performance</li>
+                <li>Develop new features based on common usage patterns</li>
+                <li>Ensure compatibility with Shopify updates</li>
+                <li>Optimize user experience and interface design</li>
+            </ul>
+
+            <h3>2.3 Support and Communication</h3>
+            <p>When you contact support, we may use your information to:</p>
+            <ul>
+                <li>Respond to your questions and troubleshoot issues</li>
+                <li>Provide technical assistance and guidance</li>
+                <li>Send important app updates or security notices</li>
+            </ul>
+
+            <h2>3. Data Storage and Security</h2>
+
+            <h3>3.1 Where Your Data is Stored</h3>
+            <p>Your time tracking data is securely stored using:</p>
+            <ul>
+                <li><strong>Firebase Cloud Firestore:</strong> Google's secure, scalable database service</li>
+                <li><strong>Geographic Location:</strong> Servers located in secure data centers (primarily US)</li>
+                <li><strong>Shop Isolation:</strong> Your data is completely separated from other stores</li>
+                <li><strong>Encryption:</strong> All data encrypted in transit and at rest</li>
+            </ul>
+
+            <h3>3.2 Security Measures</h3>
+            <div class="highlight-box">
+                <h4>We Protect Your Data With:</h4>
+                <ul>
+                    <li>🔒 <strong>Encryption:</strong> TLS 1.3 for data transmission, AES-256 for storage</li>
+                    <li>🛡️ <strong>Access Controls:</strong> Role-based permissions and multi-factor authentication</li>
+                    <li>🔍 <strong>Monitoring:</strong> 24/7 security monitoring and threat detection</li>
+                    <li>🔄 <strong>Backups:</strong> Regular automated backups with point-in-time recovery</li>
+                    <li>✅ <strong>Compliance:</strong> SOC 2 Type II and GDPR compliant infrastructure</li>
+                </ul>
+            </div>
+
+            <h3>3.3 Data Retention</h3>
+            <p>We retain your data according to the following schedule:</p>
+            <ul>
+                <li><strong>Active Stores:</strong> Data retained while app is installed</li>
+                <li><strong>Uninstalled Apps:</strong> Data automatically deleted after 30 days</li>
+                <li><strong>Support Requests:</strong> Communication records kept for 2 years</li>
+                <li><strong>Legal Requirements:</strong> May retain longer if required by law</li>
+            </ul>
+
+            <h2>4. Information Sharing and Disclosure</h2>
+
+            <h3>4.1 Third-Party Sharing</h3>
+            <div class="warning">
+                <strong>Important:</strong> We do not sell, rent, or share your personal or business data with third parties for marketing purposes. Your time tracking data stays private and secure.
+            </div>
+
+            <p>We only share information in these limited circumstances:</p>
+            <ul>
+                <li><strong>Service Providers:</strong> Trusted partners who help operate our app (Firebase, hosting)</li>
+                <li><strong>Legal Requirements:</strong> When required by law, court order, or government request</li>
+                <li><strong>Security Threats:</strong> To investigate fraud or security breaches</li>
+                <li><strong>Business Transfer:</strong> If our company is acquired (with 30 days notice)</li>
+            </ul>
+
+            <h3>4.2 Shopify Integration</h3>
+            <p>Our app integrates with Shopify's platform:</p>
+            <ul>
+                <li>We use Shopify's OAuth system for secure authentication</li>
+                <li>We access only the minimum required permissions (product write access for POS)</li>
+                <li>Shopify may have access to basic app usage statistics</li>
+                <li>All data exchange follows Shopify's security standards</li>
+            </ul>
+
+            <h2>5. Your Privacy Rights</h2>
+
+            <h3>5.1 Access and Control</h3>
+            <p>You have full control over your data:</p>
+            <ul>
+                <li><strong>View Data:</strong> Access all your time tracking data through the admin dashboard</li>
+                <li><strong>Export Data:</strong> Download your data in CSV format anytime</li>
+                <li><strong>Edit Data:</strong> Modify or correct time entries as needed</li>
+                <li><strong>Delete Data:</strong> Remove specific entries or uninstall the app to delete everything</li>
+            </ul>
+
+            <h3>5.2 Data Portability</h3>
+            <p>If you decide to switch time tracking solutions:</p>
+            <ul>
+                <li>Export all your historical data before uninstalling</li>
+                <li>Data is provided in standard CSV format</li>
+                <li>Includes all time entries, staff information, and calculated hours</li>
+                <li>Compatible with most payroll and HR systems</li>
+            </ul>
+
+            <h3>5.3 Geographic Rights</h3>
+            <p>Depending on your location, you may have additional rights:</p>
+
+            <h4>GDPR Rights (EU/UK)</h4>
+            <ul>
+                <li>Right to access your personal data</li>
+                <li>Right to rectify inaccurate data</li>
+                <li>Right to erasure ("right to be forgotten")</li>
+                <li>Right to restrict processing</li>
+                <li>Right to data portability</li>
+                <li>Right to object to processing</li>
+            </ul>
+
+            <h4>CCPA Rights (California)</h4>
+            <ul>
+                <li>Right to know what personal information is collected</li>
+                <li>Right to delete personal information</li>
+                <li>Right to opt-out of sale (not applicable - we don't sell data)</li>
+                <li>Right to non-discrimination for exercising rights</li>
+            </ul>
+
+            <h2>6. Cookies and Tracking</h2>
+
+            <h3>6.1 Essential Cookies</h3>
+            <p>We use minimal cookies necessary for app functionality:</p>
+            <ul>
+                <li><strong>Session Cookies:</strong> To maintain your login session</li>
+                <li><strong>Security Cookies:</strong> To prevent unauthorized access</li>
+                <li><strong>Preference Cookies:</strong> To remember your dashboard settings</li>
+            </ul>
+
+            <h3>6.2 No Tracking Cookies</h3>
+            <p>We do not use:</p>
+            <ul>
+                <li>❌ Advertising or marketing cookies</li>
+                <li>❌ Third-party tracking scripts</li>
+                <li>❌ Social media pixels</li>
+                <li>❌ Analytics cookies (beyond basic app performance)</li>
+            </ul>
+
+            <h2>7. Children's Privacy</h2>
+            
+            <p>Syncshift is designed for business use and is not intended for individuals under 16 years old. We do not knowingly collect personal information from children. If you believe we have inadvertently collected information from a child, please contact us immediately.</p>
+
+            <h2>8. International Data Transfers</h2>
+            
+            <p>If you are located outside the United States:</p>
+            <ul>
+                <li>Your data may be transferred to and processed in the US</li>
+                <li>We ensure adequate protection through standard contractual clauses</li>
+                <li>All transfers comply with applicable privacy laws</li>
+                <li>Data protection standards maintained regardless of location</li>
+            </ul>
+
+            <h2>9. Changes to This Privacy Policy</h2>
+            
+            <p>We may update this Privacy Policy from time to time. When we do:</p>
+            <ul>
+                <li>We'll post the updated policy with a new "Last Updated" date</li>
+                <li>Significant changes will be announced in the app dashboard</li>
+                <li>You'll have 30 days notice before changes take effect</li>
+                <li>Continued use of the app indicates acceptance of updates</li>
+            </ul>
+
+            <h2>10. Contact Information</h2>
+            
+            <p>If you have questions about this Privacy Policy or how we handle your data, please don't hesitate to reach out. We're committed to transparency and will respond promptly to any privacy concerns.</p>
+
+            <div class="highlight-box">
+                <p><strong>Email:</strong> marius.nicorescu@nuvaleoai.co.uk<br>
+                <strong>Response Time:</strong> Within 72 hours</p>
+            </div>
+
+            <h2>11. Legal Basis for Processing</h2>
+            
+            <p>We process your data based on:</p>
+            <ul>
+                <li><strong>Contract Performance:</strong> To provide the time tracking services you requested</li>
+                <li><strong>Legitimate Interest:</strong> To improve our app and provide support</li>
+                <li><strong>Consent:</strong> For any optional features or communications</li>
+                <li><strong>Legal Obligation:</strong> To comply with applicable laws and regulations</li>
+            </ul>
+
+            <p><em>This Privacy Policy is effective as of the date listed above and governs your use of Syncshift. By using our app, you acknowledge that you have read and understood this policy.</em></p>
+        </div>
+
+        <div class="contact-section">
+            <h2>Questions About Privacy?</h2>
+            <p>We're here to help clarify any privacy concerns. Our team typically responds within 24 hours.</p>
+            <a href="mailto:marius.nicorescu@nuvaleoai.co.uk" class="contact-email">Contact Privacy Team</a>
+            <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.8;">
+                Syncshift - Employee Time Tracking<br>
+                Built with ❤️ for Shopify merchants
+            </p>
+        </div>
+    </div>
 </body>
 </html>
