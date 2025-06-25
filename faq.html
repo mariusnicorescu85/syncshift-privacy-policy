@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syncshift - Frequently Asked Questions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #202223;
+            background-color: #f6f6f7;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            color: #00848e;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            color: #6d7175;
+        }
+        
+        .faq-section {
+            background: white;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .section-title {
+            background: #00848e;
+            color: white;
+            padding: 20px 30px;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        
+        .faq-item {
+            border-bottom: 1px solid #e1e3e5;
+            padding: 25px 30px;
+        }
+        
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        
+        .question {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #202223;
+            margin-bottom: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: #00848e;
+            transition: transform 0.3s ease;
+        }
+        
+        .question.active::after {
+            transform: rotate(45deg);
+        }
+        
+        .answer {
+            color: #6d7175;
+            line-height: 1.7;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .answer.active {
+            max-height: 500px;
+        }
+        
+        .answer ul {
+            margin: 10px 0 10px 20px;
+        }
+        
+        .answer li {
+            margin-bottom: 5px;
+        }
+        
+        .highlight {
+            background: #e7f7f8;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #00848e;
+        }
+        
+        .contact-section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .contact-section h2 {
+            color: #00848e;
+            margin-bottom: 15px;
+        }
+        
+        .contact-section p {
+            color: #6d7175;
+            margin-bottom: 20px;
+        }
+        
+        .support-email {
+            background: #00848e;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 6px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+        
+        .support-email:hover {
+            background: #006b73;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .faq-item {
+                padding: 20px;
+            }
+            
+            .section-title {
+                padding: 15px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>POS Time Tracking</h1>
+            <p>Frequently Asked Questions</p>
+        </div>
+
+        <div class="faq-section">
+            <div class="section-title">🚀 Getting Started</div>
+            
+            <div class="faq-item">
+                <div class="question">Do I need to create an account to use this app?</div>
+                <div class="answer">
+                    No! Our app works immediately after installation using Shopify's built-in authentication. No separate account creation, passwords, or additional setup required.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="question">How do I install the app?</div>
+                <div class="answer">
+                    <div class="highlight">
+                        <strong>Installation is simple:</strong>
+                        <ul>
+                            <li>Find our app in the Shopify App Store</li>
+                            <li>Click "Add app" and approve permissions</li>
+                            <li>The app will appear in your Shopify admin immediately</li>
+                            <li>POS extension automatically activates on your POS devices</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="question">What permissions does the app need?</div>
+                <div class="answer">
+                    We only request minimal permissions needed for functionality:
+                    <ul>
+                        <li><strong>Products (write):</strong> For POS extension integration</li>
+                        <li><strong>Shop data:</strong> To separate your data from other stores</li>
+                    </ul>
+                    We never access customer data, orders, or payment information.
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <div class="section-title">⏰ Using the App</div>
+            
+            <div class="faq-item">
+                <div class="question">How do employees clock in/out?</div>
+                <div class="answer">
+                    <strong>On Shopify POS:</strong>
+                    <ul>
+                        <li>Tap the "POS Time Tracking Extension" tile on the home screen</li>
+                        <li>Select employee name from dropdown</li>
+                        <li>Choose action: Clock In, Clock Out, Break, or Lunch</li>
+                        <li>Tap submit - done!</li>
+                    </ul>
+                    <strong>From Admin Dashboard:</strong>
+                    <ul>
+                        <li>Go to Apps → POS Time Tracking</li>
+                        <li>Click "Add Time Entry"</li>
+                        <li>Fill in employee, action, and time details</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="question">Can employees track breaks and lunch?</div>
+                <div class="answer">
+                    Yes! The app tracks four types of actions:
+                    <ul>
+                        <li><strong>Clock In:</strong> Start of work shift</li>
+                        <li><strong>Clock Out:</strong> End of work shift</li>
+                        <li><strong>Break:</strong> Short breaks during shift</li>
+                        <li><strong>Lunch:</strong> Lunch break tracking</li>
+                    </ul>
+                    Break and lunch times are automatically deducted from total work hours.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="question">What if someone forgets to clock out?</div>
+                <div class="answer">
+                    <div class="highlight">
+                        <strong>Easy fixes:</strong>
+                        <ul>
+                            <li>Managers can add missing entries from the admin dashboard</li>
+                            <li>Edit existing entries to correct times</li>
+                            <li>Delete duplicate or incorrect entries</li>
+                            <li>View all entries with timestamps for verification</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <div class="section-title">📊 Reports & Analytics</div>
+            
+            <div class="faq-item">
+                <div class="question">What reports are available?</div>
+                <div class="answer">
+                    Our dashboard provides comprehensive analytics:
+                    <ul>
+                        <li><strong>Total Hours:</strong> Calculated work time per employee</li>
+                        <li><strong>Daily Summaries:</strong> Hours worked each day</li>
+                        <li><strong>Break Analysis:</strong> Time spent on breaks vs. work</li>
+                        <li><strong>Staff Comparison:</strong> Performance across team members</li>
+                        <li><strong>Time Range Filtering:</strong> View any date range</li>
+                        <li><strong>Export Options:</strong> Download data for payroll</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="question">How are hours calculated?</div>
+                <div class="answer">
+                    Hours are calculated automatically:
+                    <ul>
+                        <li>Work time = Clock Out time - Clock In time</li>
+                        <li>Break time is tracked separately</li>
+                        <li>Lunch time is tracked separately</li>
+                        <li>Net work hours exclude break/lunch time</li>
+                        <li>Overtime is flagged for shifts over 8 hours</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="question">Can I export data for payroll?</div>
+                <div class="answer">
+                    Yes! Export options include:
+                    <ul>
+                        <li>CSV format for Excel/Google Sheets</li>
+                        <li>Date range selection</li>
+                        <li>Individual employee or all staff</li>
+                        <li>Detailed breakdown or summary totals</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <div class="section-title">👥 Staff Management</div>
+            
+            <div class="faq-item">
+                <div class="question">How do I add employees?</div>
+                <div class="answer">
+                    <div class="highlight">
+                        <strong>Add staff members easily:</strong>
+                        <ul>
+                            <li>Go to admin dashboard</li>
+                            <li>Click "Add Staff Member"</li>
+                            <li>Enter name and role</li>
+                            <li>Staff member immediately available for time tracking</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="question">Can I set different roles for employees?</div>
+                <div class="answer">
+                    Yes! You can assign roles like:
+                    <ul>
+                        <li>Manager</li>
+                        <li>Sales Associate</li>
+                        <li>Cashier</li>
+                        <li>Stock Associate</li>
+                        <li>Custom roles</li>
+                    </ul>
+                    Roles help with reporting and organization.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="question">What if an employee leaves?</div>
+                <div class="answer">
+                    <ul>
+                        <li>Disable the employee to prevent new entries</li>
+                        <li>Historical data remains for payroll records</li>
+                        <li>Re-enable if they return</li>
+                        <li>Archive old employees to clean up dropdown lists</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <div class="section-title">🔧 Technical Questions</div>
+            
+            <div class="faq-item">
+                <div class="question">Does the app work offline?</div>
+                <div class="answer">
+                    <div class="highlight">
+                        <strong>Limited offline functionality:</strong>
+                        <ul>
+                            <li>POS can queue clock actions when offline</li>
+                            <li>Data syncs when connection restored</li>
+                            <li>Admin dashboard requires internet connection</li>
+                            <li>Local timestamp recording ensures accuracy</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="question">Is my data secure?</div>
+                <div class="answer">
+                    Absolutely! Security measures include:
+                    <ul>
+                        <li>Data isolated per Shopify store</li>
+                        <li>Encrypted data transmission</li>
+                        <li>No sharing between stores</li>
+                        <li>Regular security updates</li>
+                        <li>Shopify-approved authentication only</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="question">What devices are supported?</div>
+                <div class="answer">
+                    <ul>
+                        <li><strong>Shopify POS:</strong> All supported POS devices</li>
+                        <li><strong>Admin Dashboard:</strong> Any web browser</li>
+                        <li><strong>Mobile:</strong> iOS and Android POS apps</li>
+                        <li><strong>Desktop:</strong> Windows, Mac, Linux browsers</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="question">Can I customize time tracking rules?</div>
+                <div class="answer">
+                    Current customization options:
+                    <ul>
+                        <li>Custom staff roles and names</li>
+                        <li>Flexible break and lunch tracking</li>
+                        <li>Date range filtering</li>
+                        <li>Manual time entry corrections</li>
+                    </ul>
+                    More customization features coming in future updates!
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <div class="section-title">💰 Pricing</div>
+            
+            <div class="faq-item">
+                <div class="question">How much does the app cost?</div>
+                <div class="answer">
+                    <div class="highlight">
+                        <strong>Completely FREE!</strong>
+                        <ul>
+                            <li>✅ No monthly fees</li>
+                            <li>✅ No setup costs</li>
+                            <li>✅ No hidden charges</li>
+                            <li>✅ All features included</li>
+                            <li>✅ No time limits</li>
+                        </ul>
+                        We believe every business deserves access to simple time tracking tools.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="question">Will it always be free?</div>
+                <div class="answer">
+                    Yes! Our core time tracking features will remain free. We may introduce premium features in the future, but the essential functionality you need will always be available at no cost.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="question">What's the catch?</div>
+                <div class="answer">
+                    <strong>No catch!</strong> We're committed to supporting small businesses with essential tools. Our goal is to:
+                    <ul>
+                        <li>Help merchants manage their teams effectively</li>
+                        <li>Reduce payroll complexity</li>
+                        <li>Build trust in the Shopify ecosystem</li>
+                        <li>Gather feedback to improve the app</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="question">Do I need to provide payment information?</div>
+                <div class="answer">
+                    <div class="highlight">
+                        <strong>No payment info required!</strong>
+                        <ul>
+                            <li>Install directly from Shopify App Store</li>
+                            <li>No credit card or billing setup</li>
+                            <li>Start using immediately after installation</li>
+                            <li>No recurring charges to worry about</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <div class="section-title">🛠 Troubleshooting</div>
+            
+            <div class="faq-item">
+                <div class="question">The POS tile isn't showing up</div>
+                <div class="answer">
+                    <div class="highlight">
+                        <strong>Quick fixes:</strong>
+                        <ul>
+                            <li>Ensure app is installed in Shopify admin</li>
+                            <li>Restart the POS app completely</li>
+                            <li>Check POS is connected to internet</li>
+                            <li>Verify POS app is updated to latest version</li>
+                            <li>Contact support if tile still missing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="question">Time entries aren't appearing in dashboard</div>
+                <div class="answer">
+                    Check these common issues:
+                    <ul>
+                        <li>Refresh the dashboard page</li>
+                        <li>Verify date range filter includes entry dates</li>
+                        <li>Check staff filter isn't excluding entries</li>
+                        <li>Ensure POS has internet connection for sync</li>
+                        <li>Wait 1-2 minutes for data synchronization</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="question">Hours calculation seems wrong</div>
+                <div class="answer">
+                    Common calculation issues:
+                    <ul>
+                        <li>Missing clock out entries (shows as 0 hours)</li>
+                        <li>Clock out before clock in (invalid sequence)</li>
+                        <li>Multiple clock ins without clock out</li>
+                        <li>Time zone differences in manual entries</li>
+                    </ul>
+                    Use the edit feature to correct any timing issues.
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-section">
+            <h2>Still Need Help?</h2>
+            <p>Our support team is here to help! We typically respond within 24 hours.</p>
+            <a href="mailto:support@yourapp.com" class="support-email">Contact Support</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const questions = document.querySelectorAll('.question');
+            
+            questions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    const isActive = answer.classList.contains('active');
+                    
+                    // Close all other answers
+                    document.querySelectorAll('.answer.active').forEach(openAnswer => {
+                        openAnswer.classList.remove('active');
+                        openAnswer.previousElementSibling.classList.remove('active');
+                    });
+                    
+                    // Toggle current answer
+                    if (!isActive) {
+                        answer.classList.add('active');
+                        this.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
