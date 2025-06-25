@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syncshift - Changelog</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #202223;
+            background-color: #f6f6f7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .header {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            color: #00848e;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .header .subtitle {
+            font-size: 1.1rem;
+            color: #6d7175;
+            margin-bottom: 20px;
+        }
+        
+        .current-version {
+            background: #e7f7f8;
+            padding: 12px 20px;
+            border-radius: 8px;
+            border-left: 4px solid #00848e;
+            display: inline-block;
+            font-weight: 600;
+            color: #00848e;
+        }
+        
+        .version-section {
+            background: white;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .version-header {
+            background: linear-gradient(135deg, #00848e 0%, #006b73 100%);
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .version-header.latest {
+            background: linear-gradient(135deg, #28a745 0%, #20863b 100%);
+        }
+        
+        .version-number {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+        
+        .version-date {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .version-content {
+            padding: 30px;
+        }
+        
+        .change-category {
+            margin-bottom: 25px;
+        }
+        
+        .change-category:last-child {
+            margin-bottom: 0;
+        }
+        
+        .category-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            padding: 8px 15px;
+            border-radius: 6px;
+            display: inline-block;
+        }
+        
+        .added {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .improved {
+            background: #cce7ff;
+            color: #004085;
+        }
+        
+        .fixed {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .security {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .technical {
+            background: #e2e3e5;
+            color: #383d41;
+        }
+        
+        .change-list {
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .change-list li {
+            padding: 8px 0 8px 35px;
+            position: relative;
+            color: #6d7175;
+            border-bottom: 1px solid #f1f3f4;
+        }
+        
+        .change-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .change-list li::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 18px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #00848e;
+        }
+        
+        .highlight {
+            background: #e7f7f8;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #00848e;
+            margin: 20px 0;
+        }
+        
+        .highlight h4 {
+            color: #00848e;
+            margin-bottom: 8px;
+        }
+        
+        .version-badge {
+            background: #00848e;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-left: 15px;
+        }
+        
+        .latest-badge {
+            background: #28a745;
+        }
+        
+        .coming-soon {
+            background: #f8f9fa;
+            border: 2px dashed #dee2e6;
+            color: #6c757d;
+            text-align: center;
+            padding: 40px;
+            border-radius: 12px;
+            margin-top: 30px;
+        }
+        
+        .coming-soon h3 {
+            color: #495057;
+            margin-bottom: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .header {
+                padding: 25px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .version-header {
+                padding: 15px 20px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .version-content {
+                padding: 20px;
+            }
+            
+            .version-number {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Syncshift</h1>
+            <p class="subtitle">Release History & Updates</p>
+            <div class="current-version">
+                Current Version: 1.0.0
+            </div>
+        </div>
+
+        <!-- Version 1.0.0 - Initial Release -->
+        <div class="version-section">
+            <div class="version-header latest">
+                <div>
+                    <div class="version-number">Version 1.0.0 <span class="version-badge latest">Latest</span></div>
+                    <div class="version-date">December 26, 2024</div>
+                </div>
+            </div>
+            <div class="version-content">
+                <div class="highlight">
+                    <h4>🎉 Initial Release - Welcome to Syncshift!</h4>
+                    <p>We're excited to launch Syncshift, the completely free employee time tracking solution for Shopify POS. No monthly fees, no setup hassles - just simple, reliable time tracking.</p>
+                </div>
+
+                <div class="change-category">
+                    <div class="category-title added">✨ Added</div>
+                    <ul class="change-list">
+                        <li><strong>POS Time Tracking Extension:</strong> Clock in/out directly from Shopify POS home screen</li>
+                        <li><strong>Admin Dashboard:</strong> Complete time tracking management in Shopify admin</li>
+                        <li><strong>Staff Management:</strong> Add, edit, and organize employee profiles with roles</li>
+                        <li><strong>Break & Lunch Tracking:</strong> Separate tracking for breaks and lunch periods</li>
+                        <li><strong>Automated Hour Calculations:</strong> Real-time calculation of work hours and break time</li>
+                        <li><strong>Date Range Filtering:</strong> View time entries for any date range</li>
+                        <li><strong>Analytics Dashboard:</strong> Visual reports showing hours worked, staff activity, and trends</li>
+                        <li><strong>Data Export:</strong> Download time tracking data as CSV for payroll processing</li>
+                        <li><strong>Manual Time Entry:</strong> Add or edit time entries from the admin dashboard</li>
+                        <li><strong>Multi-device Support:</strong> Works on all POS devices and web browsers</li>
+                    </ul>
+                </div>
+
+                <div class="change-category">
+                    <div class="category-title security">🔒 Security</div>
+                    <ul class="change-list">
+                        <li><strong>Shop Data Isolation:</strong> Complete separation of data between different stores</li>
+                        <li><strong>Shopify OAuth Integration:</strong> Secure authentication using Shopify's built-in system</li>
+                        <li><strong>Encrypted Data Storage:</strong> All data encrypted in transit and at rest</li>
+                        <li><strong>GDPR & CCPA Compliance:</strong> Full privacy regulation compliance</li>
+                        <li><strong>Automatic Data Cleanup:</strong> Data automatically deleted 30 days after app uninstall</li>
+                    </ul>
+                </div>
+
+                <div class="change-category">
+                    <div class="category-title technical">⚙️ Technical</div>
+                    <ul class="change-list">
+                        <li><strong>Firebase Backend:</strong> Scalable, reliable cloud database infrastructure</li>
+                        <li><strong>Real-time Sync:</strong> Instant synchronization between POS and admin dashboard</li>
+                        <li><strong>Offline Capability:</strong> POS can queue entries when offline, sync when reconnected</li>
+                        <li><strong>Responsive Design:</strong> Optimized for desktop, tablet, and mobile devices</li>
+                        <li><strong>Performance Optimized:</strong> Fast loading times and smooth user experience</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Future Plans -->
+        <div class="coming-soon">
+            <h3>🚀 Coming Soon</h3>
+            <p>We're constantly working to improve Syncshift based on your feedback. Here's what's on our roadmap:</p>
+            <ul style="text-align: left; margin: 20px auto; display: inline-block;">
+                <li>📊 Advanced reporting with overtime calculations</li>
+                <li>📅 Schedule management and shift planning</li>
+                <li>🔔 Automated break reminders</li>
+                <li>📧 Weekly time summary emails</li>
+                <li>🎯 Goal tracking and productivity insights</li>
+                <li>🔗 Integration with popular payroll systems</li>
+            </ul>
+            <p><em>Have a feature request? Contact us at marius.nicorescu@nuvaleoai.co.uk</em></p>
+        </div>
+
+        <!-- Release Notes Footer -->
+        <div style="background: white; padding: 30px; border-radius: 12px; margin-top: 30px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <h3 style="color: #00848e; margin-bottom: 15px;">Stay Updated</h3>
+            <p style="color: #6d7175; margin-bottom: 20px;">
+                Follow our development progress and be the first to know about new features.
+            </p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="mailto:marius.nicorescu@nuvaleoai.co.uk" style="background: #00848e; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600;">Get Updates</a>
+                <a href="mailto:marius.nicorescu@nuvaleoai.co.uk" style="background: #6c757d; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600;">Send Feedback</a>
+            </div>
+            <p style="margin-top: 20px; font-size: 0.9rem; color: #6c757d;">
+                Syncshift - Version 1.0.0 - Built with ❤️ for Shopify merchants
+            </p>
+        </div>
+    </div>
+</body>
+</html>
