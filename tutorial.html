@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syncshift - Tutorial Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #202223;
+            background-color: #f6f6f7;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .header {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            color: #00848e;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .header .subtitle {
+            font-size: 1.1rem;
+            color: #6d7175;
+            margin-bottom: 25px;
+        }
+        
+        .quick-nav {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            background: #00848e;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.3s ease;
+        }
+        
+        .nav-btn:hover {
+            background: #006b73;
+        }
+        
+        .tutorial-section {
+            background: white;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .section-header {
+            background: linear-gradient(135deg, #00848e 0%, #006b73 100%);
+            color: white;
+            padding: 25px 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .section-icon {
+            font-size: 1.8rem;
+            background: rgba(255,255,255,0.2);
+            padding: 10px;
+            border-radius: 8px;
+        }
+        
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+        
+        .section-content {
+            padding: 30px;
+        }
+        
+        .step {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 2px solid #e7f7f8;
+            border-radius: 8px;
+            background: #fafcfc;
+        }
+        
+        .step:last-child {
+            margin-bottom: 0;
+        }
+        
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .step-number {
+            background: #00848e;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        .step-title {
+            color: #202223;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .step-content {
+            margin-left: 50px;
+            color: #6d7175;
+        }
+        
+        .step-content p {
+            margin-bottom: 12px;
+        }
+        
+        .step-content ul {
+            margin: 12px 0 12px 20px;
+        }
+        
+        .step-content li {
+            margin-bottom: 8px;
+        }
+        
+        .screenshot-placeholder {
+            background: #e7f7f8;
+            border: 2px dashed #00848e;
+            color: #00848e;
+            padding: 40px;
+            text-align: center;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-weight: 600;
+        }
+        
+        .tip-box {
+            background: #e7f7f8;
+            border-left: 4px solid #00848e;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip-box.warning {
+            background: #fff3cd;
+            border-left-color: #ffc107;
+            color: #856404;
+        }
+        
+        .tip-box.success {
+            background: #d4edda;
+            border-left-color: #28a745;
+            color: #155724;
+        }
+        
+        .tip-box .tip-icon {
+            font-weight: 700;
+            margin-right: 8px;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e1e3e5;
+            text-align: center;
+        }
+        
+        .feature-card .icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .feature-card h4 {
+            color: #00848e;
+            margin-bottom: 8px;
+        }
+        
+        .feature-card p {
+            color: #6d7175;
+            font-size: 0.9rem;
+        }
+        
+        .button-example {
+            background: #00848e;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .user-roles {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .role-tab {
+            flex: 1;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .role-tab.active {
+            background: #e7f7f8;
+            border-color: #00848e;
+            color: #00848e;
+        }
+        
+        .role-tab:hover {
+            background: #e9ecef;
+        }
+        
+        .troubleshooting-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #dc3545;
+        }
+        
+        .troubleshooting-item h4 {
+            color: #dc3545;
+            margin-bottom: 10px;
+        }
+        
+        .troubleshooting-item .solution {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .header {
+                padding: 25px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .quick-nav {
+                gap: 10px;
+            }
+            
+            .nav-btn {
+                padding: 8px 15px;
+                font-size: 0.8rem;
+            }
+            
+            .section-header {
+                padding: 20px;
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .section-content {
+                padding: 20px;
+            }
+            
+            .step-content {
+                margin-left: 0;
+                margin-top: 15px;
+            }
+            
+            .step-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .user-roles {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Syncshift Tutorial</h1>
+            <p class="subtitle">Complete guide to employee time tracking for Shopify POS</p>
+            <div class="quick-nav">
+                <a href="#installation" class="nav-btn">📱 Installation</a>
+                <a href="#staff-setup" class="nav-btn">👥 Staff Setup</a>
+                <a href="#pos-usage" class="nav-btn">⏰ POS Usage</a>
+                <a href="#dashboard" class="nav-btn">📊 Dashboard</a>
+                <a href="#reports" class="nav-btn">📈 Reports</a>
+                <a href="#troubleshooting" class="nav-btn">🛠 Help</a>
+            </div>
+        </div>
+
+        <!-- Installation Section -->
+        <div id="installation" class="tutorial-section">
+            <div class="section-header">
+                <div class="section-icon">📱</div>
+                <div class="section-title">Getting Started</div>
+            </div>
+            <div class="section-content">
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Install Syncshift from Shopify App Store</div>
+                    </div>
+                    <div class="step-content">
+                        <p>Find and install Syncshift in your Shopify admin:</p>
+                        <ul>
+                            <li>Go to <strong>Settings → Apps and sales channels</strong></li>
+                            <li>Click <strong>"Shopify App Store"</strong></li>
+                            <li>Search for <strong>"Syncshift"</strong></li>
+                            <li>Click <strong>"Add app"</strong> and approve permissions</li>
+                        </ul>
+                        <div class="screenshot-placeholder">
+                            📸 Screenshot: Shopify App Store search results
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Access Your Dashboard</div>
+                    </div>
+                    <div class="step-content">
+                        <p>Once installed, access Syncshift from your Shopify admin:</p>
+                        <ul>
+                            <li>Go to <strong>Apps</strong> in your Shopify admin menu</li>
+                            <li>Click on <strong>"Syncshift"</strong></li>
+                            <li>You'll see the main dashboard with analytics and controls</li>
+                        </ul>
+                        <div class="tip-box success">
+                            <span class="tip-icon">✅</span>
+                            <strong>That's it!</strong> No account creation, passwords, or additional setup required. Your app is ready to use immediately.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Verify POS Extension</div>
+                    </div>
+                    <div class="step-content">
+                        <p>Check that the POS extension is active:</p>
+                        <ul>
+                            <li>Open <strong>Shopify POS</strong> on your device</li>
+                            <li>Look for <strong>"POS Time Tracking Extension"</strong> tile on home screen</li>
+                            <li>If missing, restart the POS app completely</li>
+                        </ul>
+                        <div class="tip-box warning">
+                            <span class="tip-icon">⚠️</span>
+                            <strong>Note:</strong> It may take 1-2 minutes for the POS extension to appear after installation.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Staff Setup Section -->
+        <div id="staff-setup" class="tutorial-section">
+            <div class="section-header">
+                <div class="section-icon">👥</div>
+                <div class="section-title">Setting Up Your Team</div>
+            </div>
+            <div class="section-content">
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Add Your First Employee</div>
+                    </div>
+                    <div class="step-content">
+                        <p>Create employee profiles for time tracking:</p>
+                        <ul>
+                            <li>In the Syncshift dashboard, click <button class="button-example">Add Staff Member</button></li>
+                            <li>Enter the employee's <strong>Name</strong> and <strong>Role</strong></li>
+                            <li>Choose from common roles or create custom ones</li>
+                            <li>Click <strong>Save</strong> to add the employee</li>
+                        </ul>
+                        <div class="screenshot-placeholder">
+                            📸 Screenshot: Add staff member form
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Organize by Roles</div>
+                    </div>
+                    <div class="step-content">
+                        <p>Use roles to organize your team and generate better reports:</p>
+                        <div class="feature-grid">
+                            <div class="feature-card">
+                                <div class="icon">👔</div>
+                                <h4>Manager</h4>
+                                <p>Store managers and supervisors</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="icon">🛍️</div>
+                                <h4>Sales Associate</h4>
+                                <p>Customer service and sales staff</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="icon">💰</div>
+                                <h4>Cashier</h4>
+                                <p>Checkout and payment processing</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="icon">📦</div>
+                                <h4>Stock Associate</h4>
+                                <p>Inventory and warehouse staff</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Manage Your Team</div>
+                    </div>
+                    <div class="step-content">
+                        <p>Keep your employee list organized:</p>
+                        <ul>
+                            <li><strong>Edit:</strong> Update names, roles, or other details anytime</li>
+                            <li><strong>Disable:</strong> Temporarily remove someone from active tracking</li>
+                            <li><strong>Archive:</strong> Keep historical data but clean up dropdown lists</li>
+                            <li><strong>Re-enable:</strong> Bring back employees who return to work</li>
+                        </ul>
+                        <div class="tip-box">
+                            <span class="tip-icon">💡</span>
+                            <strong>Pro Tip:</strong> Add all employees before they start using the system. This makes the first day smoother for everyone.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- POS Usage Section -->
+        <div id="pos-usage" class="tutorial-section">
+            <div class="section-header">
+                <div class="section-icon">⏰</div>
+                <div class="section-title">Using Syncshift on POS</div>
+            </div>
+            <div class="section-content">
+                <div class="user-roles">
+                    <div class="role-tab active">For Employees</div>
+                    <div class="role-tab">For Managers</div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Clock In at Start of Shift</div>
+                    </div>
+                    <div class="step-content">
+                        <p>Simple process to start tracking work time:</p>
+                        <ul>
+                            <li>Open <strong>Shopify POS</strong> on your device</li>
+                            <li>Tap the <strong>"POS Time Tracking Extension"</strong> tile</li>
+                            <li>Select your name from the dropdown</li>
+                            <li>Choose <strong>"Clock In"</strong> action</li>
+                            <li>Tap <strong>"Submit"</strong> - you'll see a success message</li>
+                        </ul>
+                        <div class="screenshot-placeholder">
+                            📸 Screenshot: POS time tracking modal with Clock In selected
+                        </div>
+                        <div class="tip-box success">
+                            <span class="tip-icon">✅</span>
+                            <strong>Success!</strong> Your shift has started. The system will track your time until you clock out.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Track Breaks and Lunch</div>
+                    </div>
+                    <div class="step-content">
+                        <p>Record breaks to ensure accurate time tracking:</p>
+                        <ul>
+                            <li><strong>Going on break:</strong> Select "Break" and submit</li>
+                            <li><strong>Lunch time:</strong> Select "Lunch" and submit</li>
+                            <li><strong>Back from break:</strong> Select "Clock In" to resume work</li>
+                        </ul>
+                        <div class="tip-box">
+                            <span class="tip-icon">💡</span>
+                            <strong>Remember:</strong> Always clock back in after breaks so your work hours are calculated correctly.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Clock Out at End of Shift</div>
+                    </div>
+                    <div class="step-content">
+                        <p>Complete your shift tracking:</p>
+                        <ul>
+                            <li>Open the time tracking extension</li>
+                            <li>Select your name</li>
+                            <li>Choose <strong>"Clock Out"</strong></li>
+                            <li>Submit to end your shift</li>
+                        </ul>
+                        <div class="tip-box warning">
+                            <span class="tip-icon">⚠️</span>
+                            <strong>Important:</strong> Don't forget to clock out! Missing clock-out entries will show as 0 hours worked.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-number">4</div>
+                        <div class="step-title">What If You Forget?</div>
+                    </div>
+                    <div class="step-content">
+                        <p>No problem! Managers can fix missing entries:</p>
+                        <ul>
+                            <li>Tell your manager about the missed clock in/out</li>
+                            <li>They can add the entry from the admin dashboard</li>
+                            <li>Or edit existing entries to correct the time</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Section -->
+        <div id="dashboard" class="tutorial-section">
+            <div class="section-header">
+                <div class="section-icon">📊</div>
+                <div class="section-title">Managing the Dashboard</div>
+            </div>
+            <div class="section-content">
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Dashboard Overview</div>
+                    </div>
+                    <div class="step-content">
+                        <p>Your dashboard shows real-time time tracking data:</p>
+                        <div class="feature-grid">
+                            <div class="feature-card">
+                                <div class="icon">📈</div>
+                                <h4>Analytics Summary</h4>
+                                <p>Total hours, active staff, recent activity</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="icon">📅</div>
+                                <h4>Recent Entries</h4>
+                                <p>Latest clock in/out and break activities</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="icon">👥</div>
+                                <h4>Staff Status</h4>
+                                <p>Who's currently clocked in or on break</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="icon">⚙️</div>
+                                <h4>Quick Actions</h4>
+                                <p>Add entries, manage staff, export data</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Adding Manual Time Entries</div>
+                    </div>
+                    <div class="step-content">
+                        <p>Sometimes you need to add entries manually:</p>
+                        <ul>
+                            <li>Click <button class="button-example">Add Time Entry</button></li>
+                            <li>Select the employee name</li>
+                            <li>Choose the action (Clock In, Clock Out, Break, Lunch)</li>
+                            <li>Set the correct date and time</li>
+                            <li>Click <strong>Save</strong> to add the entry</li>
+                        </ul>
+                        <div class="screenshot-placeholder">
+                            📸 Screenshot: Add time entry form
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Editing and Correcting Entries</div>
+                    </div>
+                    <div class="step-content">
+                        <p>Fix mistakes or update entries:</p>
+                        <ul>
+                            <li>Find the entry in your time entries list</li>
+                            <li>Click the <strong>Edit</strong> button</li>
+                            <li>Update the time, date, or action as needed</li>
+                            <li>Save changes to update calculations</li>
+                        </ul>
+                        <div class="tip-box">
+                            <span class="tip-icon">💡</span>
+                            <strong>Auto-calculation:</strong> Hours are automatically recalculated when you edit entries.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-number">4</div>
+                        <div class="step-title">Filtering and Searching</div>
+                    </div>
+                    <div class="step-content">
+                        <p>Find specific data quickly:</p>
+                        <ul>
+                            <li><strong>Date Range:</strong> Select start and end dates</li>
+                            <li><strong>Staff Filter:</strong> View one employee or all staff</li>
+                            <li><strong>Action Filter:</strong> Show only clock ins, breaks, etc.</li>
+                            <li><strong>Time Range:</strong> Filter by specific hours</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reports Section -->
+        <div id="reports" class="tutorial-section">
+            <div class="section-header">
+                <div class="section-icon">📈</div>
+                <div class="section-title">Reports & Analytics</div>
+            </div>
+            <div class="section-content">
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Understanding Hour Calculations</div>
+                    </div>
+                    <div class="step-content">
+                        <p>How Syncshift calculates work hours:</p>
+                        <ul>
+                            <li><strong>Work Time:</strong> Clock Out time minus Clock In time</li>
+                            <li><strong>Break Time:</strong> Tracked separately, not deducted from work time</li>
+                            <li><strong>Lunch Time:</strong> Tracked separately for compliance</li>
+                            <li><strong>Net Hours:</strong> Total productive work time</li>
+                        </ul>
+                        <div class="tip-box">
+                            <span class="tip-icon">📝</span>
+                            <strong>Example:</strong> Clock in 9:00 AM, lunch at 12:00 PM, back at 1:00 PM, clock out 5:00 PM = 7 hours work + 1 hour lunch.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Weekly and Monthly Reports</div>
+                    </div>
+                    <div class="step-content">
+                        <p>Generate comprehensive time reports:</p>
+                        <ul>
+                            <li>Set your desired date range</li>
+                            <li>Select individual staff or all employees</li>
+                            <li>View totals by day, week, or month</li>
+                            <li>See overtime hours (over 8 hours/day or 40 hours/week)</li>
+                        </ul>
+                        <div class="screenshot-placeholder">
+                            📸 Screenshot: Analytics dashboard with charts
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Exporting for Payroll</div>
+                    </div>
+                    <div class="step-content">
+                        <p>Get data for payroll processing:</p>
+                        <ul>
+                            <li>Click <button class="button-example">Export Data</button></li>
+                            <li>Choose your date range</li>
+                            <li>Select CSV format for Excel/Google Sheets</li>
+                            <li>Download includes all time entries and calculated hours</li>
+                        </ul>
+                        <div class="tip-box success">
+                            <span class="tip-icon">✅</span>
+                            <strong>Payroll Ready:</strong> Exported data is formatted for easy import into most payroll systems.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-number">4</div>
+                        <div class="step-title">Performance Insights</div>
+                    </div>
+                    <div class="step-content">
+                        <p>Use reports to understand patterns:</p>
+                        <ul>
+                            <li><strong>Peak Hours:</strong> When most staff are working</li>
+                            <li><strong>Break Patterns:</strong> Average break lengths and frequency</li>
+                            <li><strong>Attendance Trends:</strong> Punctuality and consistency</li>
+                            <li><strong>Overtime Analysis:</strong> Who's working extra hours</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Troubleshooting Section -->
+        <div id="troubleshooting" class="tutorial-section">
+            <div class="section-header">
+                <div class="section-icon">🛠</div>
+                <div class="section-title">Troubleshooting & Support</div>
+            </div>
+            <div class="section-content">
+                <div class="troubleshooting-item">
+                    <h4>❌ POS tile not showing up</h4>
+                    <p>The time tracking tile isn't visible on the POS home screen.</p>
+                    <div class="solution">
+                        <strong>Solutions:</strong>
+                        <ul>
+                            <li>Restart the Shopify POS app completely</li>
+                            <li>Check that the app is installed in Shopify admin</li>
+                            <li>Ensure POS device has internet connection</li>
+                            <li>Update POS app to the latest version</li>
+                            <li>Wait 2-3 minutes after installation for tile to appear</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="troubleshooting-item">
+                    <h4>❌ Time entries not appearing in dashboard</h4>
+                    <p>Entries made on POS aren't showing up in the admin dashboard.</p>
+                    <div class="solution">
+                        <strong>Solutions:</strong>
+                        <ul>
+                            <li>Refresh the dashboard page</li>
+                            <li>Check date range filter includes entry dates</li>
+                            <li>Verify staff filter isn't excluding the entries</li>
+                            <li>Ensure POS had internet when entry was made</li>
+                            <li>Wait 1-2 minutes for data to sync</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="troubleshooting-item">
+                    <h4>❌ Hours calculation seems wrong</h4>
+                    <p>The calculated work hours don't match expected values.</p>
+                    <div class="solution">
+                        <strong>Common Causes:</strong>
+                        <ul>
+                            <li><strong>Missing clock out:</strong> Shows as 0 hours (add missing entry)</li>
+                            <li><strong>Clock out before clock in:</strong> Invalid sequence</li>
+                            <li><strong>Multiple clock ins:</strong> Without clock out between them</li>
+                            <li><strong>Time zone issues:</strong> In manual entries</li>
+                            <li><strong>Break periods:</strong> Check if breaks are properly recorded</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="troubleshooting-item">
+                    <h4>❌ Can't add or edit staff members</h4>
+                    <p>Getting errors when trying to manage employee information.</p>
+                    <div class="solution">
+                        <strong>Solutions:</strong>
+                        <ul>
+                            <li>Check that you have admin access to the Shopify store</li>
+                            <li>Refresh the page and try again</li>
+                            <li>Ensure staff name isn't duplicate</li>
+                            <li>Check for special characters in names</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-number">💬</div>
+                        <div class="step-title">Getting Help</div>
+                    </div>
+                    <div class="step-content">
+                        <p>When you need additional support:</p>
+                        <ul>
+                            <li><strong>Email Support:</strong> marius.nicorescu@nuvaleoai.co.uk</li>
+                            <li><strong>Response Time:</strong> Within 24 hours</li>
+                            <li><strong>Include:</strong> Store domain, employee name (if relevant), and screenshots</li>
+                      
+                        </ul>
+                        <div class="tip-box">
+                            <span class="tip-icon">💡</span>
+                            <strong>Before contacting support:</strong> Try refreshing the page, checking your internet connection, and reviewing this tutorial.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div style="background: white; padding: 30px; border-radius: 12px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <h3 style="color: #00848e; margin-bottom: 15px;">🎉 You're All Set!</h3>
+            <p style="color: #6d7175; margin-bottom: 20px;">
+                Congratulations! You now know how to use all of Syncshift's features. Your team can start tracking time immediately.
+            </p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="mailto:marius.nicorescu@nuvaleoai.co.uk" style="background: #00848e; color: white; padding: 12px 25px; border-radius: 6px; text-decoration: none; font-weight: 600;">Share Feedback</a>
+                <a href="mailto:marius.nicorescu@nuvaleoai.co.uk" style="background: #6c757d; color: white; padding: 12px 25px; border-radius: 6px; text-decoration: none; font-weight: 600;">Get Support</a>
+            </div>
+            <p style="margin-top: 20px; font-size: 0.9rem; color: #6c757d;">
+                Syncshift Tutorial - Version 1.0 - Built for Shopify merchants ❤️
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Role tab switching (placeholder for future interactivity)
+        document.querySelectorAll('.role-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.role-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
